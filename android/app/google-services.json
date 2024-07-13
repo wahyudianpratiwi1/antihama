@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "722000278490",
+    "firebase_url": "https://anti-hama1-default-rtdb.firebaseio.com",
+    "project_id": "anti-hama1",
+    "storage_bucket": "anti-hama1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722000278490:android:c515fcee2d3ea81ff346e3",
+        "android_client_info": {
+          "package_name": "com.antihama.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7V2PYT4WLjxxUd1i2WhvRAJ6vCZPJGUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
