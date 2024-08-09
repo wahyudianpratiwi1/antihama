@@ -8,4 +8,5 @@ class ColorConfig {
   static const blue3 = Color(0xFF0D5575);
   static const blue4 = Color(0xFF227FA8);
   static const gray = Color(0xFFD9D9D9);
+  static const blue5 = Color(0XFF004AAD);
 }

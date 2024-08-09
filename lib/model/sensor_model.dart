@@ -1,4 +1,5 @@
 class Sensor {
+  int? frekuensi;
   int? malam;
   int? manual;
   int? motion;
@@ -6,6 +7,7 @@ class Sensor {
   int? siang;
 
   Sensor({
+    this.frekuensi,
     this.malam,
     this.manual,
     this.motion,
@@ -14,6 +16,7 @@ class Sensor {
   });
 
   factory Sensor.fromJson(Map<String, dynamic> json) => Sensor(
+        frekuensi: json["Frekuensi"],
         malam: json["Malam"],
         manual: json["Manual"],
         motion: json["Motion"],
@@ -22,6 +25,7 @@ class Sensor {
       );
 
   Map<String, dynamic> toJson() => {
+        "Frekuensi": frekuensi,
         "Malam": malam,
         "Manual": manual,
         "Motion": motion,

@@ -17,22 +17,39 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
     // final SensorController sensorController = Get.put(SensorController());
     return Scaffold(
-        body: Stack(children: [
-      Center(
-        child: Image(
-          image: const AssetImage(AssetConfig.bg),
-          width: screenWidth,
-          height: screenHeight,
-          fit: BoxFit.fill,
-        ),
-      ),
-      const Column(
-        children: [Widget1(), Widget2()],
-      )
-    ]));
+        appBar: AppBar(
+            title: const Text(
+              "Anti Hama",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: ColorConfig.blue1,
+            toolbarHeight: 40,
+            automaticallyImplyLeading: false),
+        body: SafeArea(child: LayoutBuilder(builder: (context, constraints) {
+          return SingleChildScrollView(
+              child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: Stack(children: [
+                    Center(
+                      child: Image(
+                        image: const AssetImage(AssetConfig.bg),
+                        width: screenWidth,
+                        height: 950,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    const Column(
+                      children: [Widget1(), Widget2()],
+                    )
+                  ])));
+        })));
   }
 }
 
@@ -55,21 +72,21 @@ class _Widget1State extends State<Widget1> {
         Container(
           height: 30,
         ),
-        Container(
-          color: ColorConfig.blue1,
-          width: screenWidth,
-          height: 40,
-          child: const Padding(
-            padding: EdgeInsets.only(top: 8.0, left: 8),
-            child: Text(
-              "Anti Hama",
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
+        // Container(
+        //   color: ColorConfig.blue1,
+        //   width: screenWidth,
+        //   height: 40,
+        //   child: const Padding(
+        //     padding: EdgeInsets.only(top: 8.0, left: 8),
+        //     child: Text(
+        //       "Anti Hama",
+        //       style: TextStyle(
+        //           fontSize: 16,
+        //           color: Colors.white,
+        //           fontWeight: FontWeight.bold),
+        //     ),
+        //   ),
+        // ),
         Padding(
           padding: const EdgeInsets.only(top: 20.0, bottom: 40),
           child: Row(
@@ -278,8 +295,72 @@ class _Widget2State extends State<Widget2> {
                             : [ColorConfig.gray, ColorConfig.blue3],
                       ),
                     ]);
-              })
-            ]))
+              }),
+            ])),
+        Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: Container(
+            color: ColorConfig.blue1,
+            width: screenWidth * 0.8,
+            height: 40,
+            child: const Padding(
+              padding: EdgeInsets.only(top: 5.0, left: 8),
+              child: Center(
+                child: Text(
+                  "Frekuensi Yang Terpakai",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Container(
+          height: screenHeight * 0.15,
+          width: screenWidth * 0.8,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                ColorConfig.blue3, // Warna atas
+                Color.fromARGB(255, 78, 149, 194), // Warna bawah
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                spreadRadius: 0,
+                blurRadius: 2,
+                offset: const Offset(0, 3), // Posisi bayangan
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              Obx(() {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Text(
+                      "${sensorController.sensorData.value.frekuensi} kHz",
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.lightGreen,
+                          fontWeight: FontWeight.bold)),
+                );
+              }),
+              Text(
+                "──────────────────────── kHz",
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+        )
       ],
     );
   }

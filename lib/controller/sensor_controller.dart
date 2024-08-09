@@ -41,6 +41,7 @@ class SensorController extends GetxController {
         }
       } else {
         sensorData.value = Sensor(
+          frekuensi: 0,
           malam: 0,
           manual: 0,
           motion: 0,
@@ -48,6 +49,7 @@ class SensorController extends GetxController {
           siang: 0,
         );
         _showLocalNotification(Sensor(
+          frekuensi: 0,
           malam: 0,
           manual: 0,
           motion: 0,
